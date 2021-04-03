@@ -1,0 +1,35 @@
+#! /bin/bash
+
+echo "Developer - Zlygosteva Anastasiya. Group 737-1. 
+The program name - User search.
+The program searches for a user,
+displays his unique id identifier (UID) and
+the names of the groups this user belongs to.
+
+"
+echo "Let's start" 
+answer="y"
+while [ "$answer" != "n" ] && [ "$answer" != "N" ]
+do
+echo "Please enter your username:"
+read user_name
+if grep $user_name /etc/passwd
+then
+echo "The user $user_name exists. Its UID:"
+id -u
+echo "The user $user_name is in the groups:"
+id -Gn $user_name
+echo "Primary user group:"
+id -gn $user_name
+else
+echo "The user $user_name doesn't exist. Please, try again"
+fi
+echo "Do you want to continue? (y/n)?"
+read answer
+while [ "$answer" != "y" ] && [ "$answer" != "n" ] && [ "$answer" != "Y" ] && [ "$answer" != "N" ]
+do
+echo "Incorrect choice. Please, enter n or y" >&2
+read answer
+done 
+done
+

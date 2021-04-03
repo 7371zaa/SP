@@ -1,0 +1,5 @@
+
+FROM ubuntu
+COPY test .
+RUN chmod ugo+x test
+CMD ./test

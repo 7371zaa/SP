@@ -1,0 +1,6 @@
+
+FROM ubuntu
+ADD zaa.asm .
+RUN apt-get clean && apt-get update && apt install -qy build-essential
+RUN gcc zaa.asm -S -o zaa.S && gcc -c zaa.S -o zaa.o && gcc zaa.o -o zaa
+CMD ./zaa

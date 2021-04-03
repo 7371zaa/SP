@@ -1,0 +1,5 @@
+
+FROM ubuntu:latest
+COPY min.asm .
+COPY sp3.cpp .
+RUN apt-get update && apt-get upgrade -y && apt-get install build-essential nasm -y
